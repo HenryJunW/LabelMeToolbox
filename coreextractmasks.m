@@ -26,8 +26,7 @@ for i = 1:length(D)
     % folderlist{i} = D(i).annotation.folder;
     filelist = D(i).annotation.filename;
     [E,k] = LMquery(D(i), 'object.attributes', 'shadow-free'); 
-	% counts = LMcountobject(database(j)); 
-	for m = 1:length(E)
+    for m = 1:length(E)
 		[mask1, class] = LMobjectmask(E(m).annotation, HOMEIMAGES);
 
 		mask = mask + sum(mask1, 3);
@@ -61,6 +60,6 @@ for i = 1:length(D)
 % image export the mask to be 
 	[path, name,ext] = fileparts(filelist)
 
-	imwrite(uint8(mask), strcat('/vulcan/scratch/junwang/core3D/segmentation_masks/', name));
+	imwrite(uint8(mask), strcat('/vulcan/scratch/junwang/core3D/segmentation_masks/', name), 'jpg');
 
 end
